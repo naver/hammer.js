@@ -1,9 +1,9 @@
 import {
-    INPUT_START,
-    INPUT_MOVE,
-    INPUT_END,
-    INPUT_CANCEL,
-    INPUT_TYPE_TOUCH
+  INPUT_START,
+  INPUT_MOVE,
+  INPUT_END,
+  INPUT_CANCEL,
+  INPUT_TYPE_TOUCH
 } from '../inputjs/input-consts';
 import Input from '../inputjs/input-constructor';
 import toArray from '../utils/to-array';
@@ -28,11 +28,9 @@ const TOUCH_TARGET_EVENTS = 'touchstart touchmove touchend touchcancel';
 export default class TouchInput extends Input {
   constructor() {
     TouchInput.prototype.evTarget = TOUCH_TARGET_EVENTS;
-    TouchInput.prototype.targetIds = {};
     super(...arguments);
-
+    this.targetIds = {};
     // this.evTarget = TOUCH_TARGET_EVENTS;
-    // this.targetIds = {};
   }
   handler(ev) {
     let type = TOUCH_INPUT_MAP[ev.type];
@@ -106,8 +104,8 @@ function getTouches(ev, type) {
   }
 
   return [
-      // merge targetTouches with changedTargetTouches so it contains ALL touches, including 'end' and 'cancel'
-      uniqueArray(targetTouches.concat(changedTargetTouches), 'identifier', true),
-      changedTargetTouches
+    // merge targetTouches with changedTargetTouches so it contains ALL touches, including 'end' and 'cancel'
+    uniqueArray(targetTouches.concat(changedTargetTouches), 'identifier', true),
+    changedTargetTouches
   ];
 }
