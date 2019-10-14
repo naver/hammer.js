@@ -1,5 +1,6 @@
 The MIT License (MIT)
 
+Copyright (c) 2018-present NAVER Corp.
 Copyright (C) 2011-2017 by Jorik Tangelder (Eight Media)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
