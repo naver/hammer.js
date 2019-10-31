@@ -65,6 +65,8 @@ export default function computeInputData(manager, input) {
   let target = manager.element;
   if (hasParent(input.srcEvent.target, target)) {
     target = input.srcEvent.target;
+  } else {
+    target = (input.srcEvent.composedPath && input.srcEvent.composedPath()[0]) || target;
   }
   input.target = target;
 }
