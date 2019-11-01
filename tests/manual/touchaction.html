@@ -79,6 +79,7 @@
             mc.get('rotate').set({ enable: true });
 
             mc.on("pan swipe rotate pinch tap doubletap press", function(ev) {
+              console.log(ev.target);
                 el.textContent = ev.type +" "+ el.textContent;
             });
         });

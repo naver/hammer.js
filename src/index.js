@@ -1,5 +1,5 @@
 
-import Hammer from "./Hammer";
+import Hammer from "./hammer";
 import assign from "./utils/assign";
 import defaults from "./defaults";
 

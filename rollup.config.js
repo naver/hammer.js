@@ -21,7 +21,7 @@ export default [
 		},
 	},
 	{
-		input: "src/Hammer.js",
+		input: "src/hammer.js",
 		plugins: [babel({ exclude: "node_modules/**" }), replaceVersion],
 		output: {
 			banner: banner,
@@ -35,7 +35,7 @@ export default [
 		},
 	},
 	{
-		input: "src/Hammer.js",
+		input: "src/hammer.js",
 		plugins: [babel({ exclude: "node_modules/**" }), replaceVersion, uglify({
 			sourcemap: true,
 			output: {
