@@ -64,14 +64,18 @@ export default function computeInputData(manager, input) {
   // find the correct target
   let target = manager.element;
   const srcEvent = input.srcEvent;
-  if (hasParent(srcEvent.target, target)) {
-    target = srcEvent.target;
+  let srcEventTarget;
+
+  if (srcEvent.composedPath) {
+    srcEventTarget = srcEvent.composedPath()[0];
+  } else if (srcEvent.path) {
+    srcEventTarget = srcEvent.path[0];
   } else {
-    // For Polymer / shadow DOM
-    const path = srcEvent.path || (srcEvent.composedPath && srcEvent.composedPath());
-    if (hasParent(path[0], target)) {
-      target = path[0]
-    }
+    srcEventTarget = target;
+  }
+
+  if (hasParent(srcEventTarget, target)) {
+    target = srcEventTarget;
   }
   input.target = target;
 }
