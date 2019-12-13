@@ -71,7 +71,7 @@ export default function computeInputData(manager, input) {
   } else if (srcEvent.path) {
     srcEventTarget = srcEvent.path[0];
   } else {
-    srcEventTarget = target;
+    srcEventTarget = srcEvent.target;
   }
 
   if (hasParent(srcEventTarget, target)) {
