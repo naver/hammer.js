@@ -115,6 +115,7 @@ export default {
  * @private
  * Default recognizer setup when calling `Hammer()`
  * When creating a new Manager these will be skipped.
+ * This is separated with other defaults because of tree-shaking.
  * @type {Array}
  */
 export const preset = [
