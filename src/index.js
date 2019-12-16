@@ -1,7 +1,7 @@
 
 import Hammer from "./hammer";
 import assign from "./utils/assign";
-import defaults from "./defaults";
+import defaults, { preset } from "./defaults";
 
 import {
   INPUT_START,
@@ -59,6 +59,8 @@ import splitStr from "./utils/split-str";
 import inArray from "./utils/in-array";
 import boolOrFn from "./utils/bool-or-fn";
 import hasParent from "./utils/has-parent";
+
+const mergedDefaults = assign({}, defaults, { preset })
 
 // this prevents errors when Hammer is loaded in the presence of an AMD
 //  style loader but by script tag, not by the loader.
@@ -118,5 +120,5 @@ export {
   hasParent,
   addEventListeners,
   removeEventListeners,
-  defaults,
+  mergedDefaults as defaults,
 };

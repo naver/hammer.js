@@ -1,5 +1,5 @@
 import Manager from "./manager";
-import defaults from "./defaults";
+import defaults, { preset } from "./defaults";
 import assign from './utils/assign';
 import {
   INPUT_START,
@@ -88,7 +88,7 @@ export default class Hammer {
 	static STATE_ENDED = STATE_ENDED;
 	static STATE_RECOGNIZED = STATE_RECOGNIZED;
 	static STATE_CANCELLED = STATE_CANCELLED;
-	static STATE_FAILED = STATE_FAILED; 
+	static STATE_FAILED = STATE_FAILED;
 	static Manager = Manager;
 	static Input = Input;
 	static TouchAction = TouchAction;
@@ -123,18 +123,12 @@ export default class Hammer {
 	static hasParent = hasParent;
 	static addEventListeners = addEventListeners;
 	static removeEventListeners = removeEventListeners;
-	static defaults = defaults;
+	static defaults = assign({}, defaults, { preset });
 	constructor(element, options = {}) {
 		return new Manager(element, {
 			recognizers: [
-					// RecognizerClass, options, [recognizeWith, ...], [requireFailure, ...]
-					[RotateRecognizer, { enable: false }],
-					[PinchRecognizer, { enable: false }, ['rotate']],
-					[SwipeRecognizer, { direction: DIRECTION_HORIZONTAL }],
-					[PanRecognizer, { direction: DIRECTION_HORIZONTAL }, ['swipe']],
-					[TapRecognizer],
-					[TapRecognizer, { event: 'doubletap', taps: 2 }, ['tap']],
-					[PressRecognizer]
+        // RecognizerClass, options, [recognizeWith, ...], [requireFailure, ...]
+        ...preset
 			],
 			...options,
 		});

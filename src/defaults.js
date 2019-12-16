@@ -1,4 +1,11 @@
 import { TOUCH_ACTION_COMPUTE } from "./touchactionjs/touchaction-Consts";
+import TapRecognizer from "./recognizers/tap";
+import PanRecognizer from "./recognizers/pan";
+import SwipeRecognizer from "./recognizers/swipe";
+import PinchRecognizer from "./recognizers/pinch";
+import RotateRecognizer from "./recognizers/rotate";
+import PressRecognizer from "./recognizers/press";
+import {DIRECTION_HORIZONTAL} from "./inputjs/input-consts";
 
 export default {
 	/**
@@ -43,14 +50,6 @@ export default {
 	 * @default null
 	 */
 	inputClass: null,
-
-	/**
-	 * @private
-	 * Default recognizer setup when calling `Hammer()`
-	 * When creating a new Manager these will be skipped.
-	 * @type {Array}
-	 */
-	preset: [],
 
 	/**
 	 * @private
@@ -111,3 +110,19 @@ export default {
 		tapHighlightColor: "rgba(0,0,0,0)",
 	},
 };
+
+/**
+ * @private
+ * Default recognizer setup when calling `Hammer()`
+ * When creating a new Manager these will be skipped.
+ * @type {Array}
+ */
+export const preset = [
+  [RotateRecognizer, { enable: false }],
+  [PinchRecognizer, { enable: false }, ['rotate']],
+  [SwipeRecognizer, { direction: DIRECTION_HORIZONTAL }],
+  [PanRecognizer, { direction: DIRECTION_HORIZONTAL }, ['swipe']],
+  [TapRecognizer],
+  [TapRecognizer, { event: 'doubletap', taps: 2 }, ['tap']],
+  [PressRecognizer]
+];
