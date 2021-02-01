@@ -70,6 +70,6 @@
 	"main": "dist/hammer.js",
 	"types": "src/hammer.d.ts",
 	"dependencies": {
-		"@types/hammerjs": "^2.0.36"
+		"@types/hammerjs": "^2.0.38"
 	}
 }
